@@ -94,24 +94,7 @@ def processar_log_eventos_criticos(arquivo_log):
 
 
 if __name__ == "__main__":
-    # Exemplo 1: Fecho de Kleene com "0" e "1", permitindo a sequência vazia
-    L = KleeneLanguage(["0", "1"], allow_empty=True)
-    resultado_ate_3 = L ^ 3  # Fecho até o comprimento 3
-    print("Fecho de Kleene até comprimento 3 (L = {0,1}, com ε):")
-    print(resultado_ate_3)
-
-    # Exemplo 2: Fecho de Kleene com "ab", "cd", "ef", sem permitir a sequência vazia
-    L2 = KleeneLanguage(["ab", "cd", "ef"], allow_empty=False)
-    resultado_ate_4 = L2 ^ 4  # Fecho até o comprimento 4
-    print("\nFecho de Kleene até comprimento 4 (L = {ab, cd, ef}, sem ε):")
-    print(resultado_ate_4)
-
-    # Exemplo 3: Fecho de Kleene com "0" e "1", sem permitir a sequência vazia
-    resultado_ate_5 = L ^ 5  # Fecho até o comprimento 5
-    print("\nFecho de Kleene até comprimento 5 (L = {0, 1}, sem ε):")
-    print(resultado_ate_5)
-
-    # Exemplo 4: Texto para testar a divisão, fecho e compactação
+    # Exemplo: Texto para testar a divisão, fecho e compactação
     texto = "sol sol lua lua lua estrela estrela estrela estrela sol lua sol lua lua estrela"
     delimitador = " "
     max_fecho = 1
@@ -124,13 +107,13 @@ if __name__ == "__main__":
     print("Entrada:", texto)
     print("Saída compactada:", resultado_compactado)
 
-    # Exemplo 5: Verificar palíndromos em frases
+    # Exemplo: Verificar palíndromos em frases
     texto_palindromos = "radar sol ana arara computar level"
     palindromos = verificar_palindromos(texto_palindromos)
     print("\nPalíndromos encontrados:")
     print(palindromos)
 
-    # Exemplo 6: Processamento de Dados em Lote (Vendas)
+    # Exemplo: Processamento de Dados em Lote (Vendas)
     # Caminho absoluto para o arquivo de vendas
     arquivo_vendas = r"./vendas.txt"
     
@@ -147,7 +130,7 @@ if __name__ == "__main__":
     else:
         print("O arquivo 'vendas.txt' não foi encontrado no diretório especificado.")
         
-    # Exemplo 7: Processamento de Log 
+    # Exemplo: Processamento de Log 
     arquivo_log = r"./mock_log_file.txt"
     eventos = processar_log_eventos_criticos(arquivo_log)
     contador_de_tipos = {tipo: len(mensagens) for tipo, mensagens in eventos.items()}
@@ -162,16 +145,6 @@ if __name__ == "__main__":
 '''
 
 SAIDA DO TERMINAL 
-
-Fecho de Kleene até comprimento 3 (L = {0,1}, com ε):
-['', '0', '1', '00', '01', '10', '11', '000', '001', '010', '011', '100', '101', '110', '111']
-
-Fecho de Kleene até comprimento 4 (L = {ab, cd, ef}, sem ε):
-['ef', 'ab', 'cd', 'efef', 'efab', 'efcd', 'abef', 'abab', 'abcd', 'cdef', 'cdab', 'cdcd']
-
-Fecho de Kleene até comprimento 5 (L = {0, 1}, sem ε):
-['', '0', '1', '00', '01', '10', '11', '000', '001', '010', '011', '100', '101', '110', '111', '0000', '0001', '0010', '0011', '0100', '0101', '0110', '0111', '1000', '1001', '1010', '1011', '1100', '1101', '1110', '1111', '00000', '00001', '00010', '00011', '00100', '00101', '00110', '00111', '01000', '01001', '01010', '01011', '01100', '01101', '01110', '01111', '10000', '10001', '10010', '10011', '10100', '10101', '10110', '10111', '11000', '11001', '11010', '11011', '11100', '11101', '11110', '11111']
-
 === Processamento com Split, Fecho e Compactação ===
 Partes divididas: ['sol', 'sol', 'lua', 'lua', 'lua', 'estrela', 'estrela', 'estrela', 'estrela', 'sol', 'lua', 'sol', 'lua', 'lua', 'estrela']
 
