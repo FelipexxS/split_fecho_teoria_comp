@@ -79,6 +79,19 @@ def processar_dados_vendas(arquivo, delimitador=","):
     
     return transacoes, total_vendas
 
+def processar_log_eventos_criticos(arquivo_log):
+    eventos_criticos = ["WARNING", "ERROR", "CRITICAL"]
+    eventos = {}
+    with open(arquivo_log, "r") as f:
+        for linha in f:
+            campos = split_string(linha,  ";")
+            timestamp, tipo_evento, mensagem, valor = campos
+            if tipo_evento not in eventos and tipo_evento in eventos_criticos:
+                eventos[tipo_evento] = [f"{timestamp}: {mensagem} => {valor}"]
+            elif tipo_evento in eventos and tipo_evento in eventos_criticos:
+                eventos[tipo_evento].append(f"{timestamp}: {mensagem} => {valor}")
+    return eventos
+
 
 if __name__ == "__main__":
     # Exemplo 1: Fecho de Kleene com "0" e "1", permitindo a sequência vazia
@@ -119,7 +132,7 @@ if __name__ == "__main__":
 
     # Exemplo 6: Processamento de Dados em Lote (Vendas)
     # Caminho absoluto para o arquivo de vendas
-    arquivo_vendas = r"C:\Users\jvroc\Desktop\teoria\vendas.txt"
+    arquivo_vendas = r"./vendas.txt"
     
     # Verifique se o arquivo existe
     if os.path.exists(arquivo_vendas):
@@ -133,6 +146,18 @@ if __name__ == "__main__":
         print(f"\nTotal de Vendas: {total_vendas}")
     else:
         print("O arquivo 'vendas.txt' não foi encontrado no diretório especificado.")
+        
+    # Exemplo 7: Processamento de Log 
+    arquivo_log = r"./mock_log_file.txt"
+    eventos = processar_log_eventos_criticos(arquivo_log)
+    contador_de_tipos = {tipo: len(mensagens) for tipo, mensagens in eventos.items()}
+    print(f"\nEventos Críticos Processados: {contador_de_tipos}\n")
+    for tipo_evento, mensagens in eventos.items():
+        print(f"Tipo de Evento: {tipo_evento}")
+        for mensagem in mensagens:
+            print(mensagem)
+    print("\n=== Fim do Processamento ===")
+     
 
 '''
 
@@ -182,6 +207,20 @@ ID: 4, Quantidade: 3, Preço: 150.0, Total da Transação: 450.0
 ID: 5, Quantidade: 15, Preço: 60.0, Total da Transação: 900.0
 
 Total de Vendas: 2950.0
+
+Eventos Críticos Processados: {'WARNING': 2, 'ERROR': 2}
+
+Tipo de Evento: WARNING
+2023-10-27 10:20:00: High CPU usage => Process ID 1234
+
+2023-10-27 10:05:00: Low disk space => C:\ drive
+
+Tipo de Evento: ERROR
+2023-10-27 10:10:00: Database connection failed => SQL Server
+
+2023-10-27 10:25:00: Application crash => NullPointerException
+
+=== Fim do Processamento ===
 '''
 
 

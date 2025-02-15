@@ -1,0 +1,14 @@
+2023-10-27 10:00:00;INFO;User login successful;john.doe
+2023-10-27 10:20:00;WARNING;High CPU usage;Process ID 1234
+2023-10-27 10:01:00;INFO;User accessed page;/home
+2023-10-27 10:02:00;INFO;User submitted form;contact-us
+2023-10-27 10:03:00;INFO;User logged out;john.doe
+2023-10-27 10:05:00;WARNING;Low disk space;C:\ drive
+2023-10-27 10:10:00;INFO;System started;
+2023-10-27 10:11:00;INFO;Network connection established;192.168.1.100
+2023-10-27 10:10:00;ERROR;Database connection failed;SQL Server
+2023-10-27 10:11:00;INFO; Retrying Database connection with host;192.168.1.100
+2023-10-27 10:12:00;INFO;Database connection successful;MySQL
+2023-10-27 10:15:00;INFO;File upload successful;/path/to/file.txt
+2023-10-27 10:20:00;INFO;Email sent;user@example.com
+2023-10-27 10:25:00;ERROR;Application crash;NullPointerException

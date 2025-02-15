@@ -20,8 +20,3 @@ def split_string(texto, delimitador=" "):
     
     return resultado
 
-# Testes
-print(split_string("Python é incrível"))  # ['Python', 'é', 'incrível']
-print(split_string("   Muitos   espaços   ", " "))  # ['Muitos', 'espaços']
-print(split_string("maçã,banana,uva", ","))  # ['maçã', 'banana', 'uva']
-print(split_string("um--dois--três", "--"))  # ['um', 'dois', 'três']
